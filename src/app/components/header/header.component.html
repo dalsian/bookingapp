@@ -1,0 +1,9 @@
+<span *ngIf="isLoggedIn; else notLoggedIn">
+    <button type="button" class="btn btn-primary toTheLeft" (click)="goLogout()" >Go Logout</button>
+</span>
+<ng-template #notLoggedIn>
+    <button type="button" class="btn btn-primary toTheLeft" (click)="goLogin()" >Go Login</button>
+</ng-template>
+<button type="button" class="btn btn-primary toTheLeft" (click)="goLogin()" *ngIf="isAdmin">Manage Movies</button>
+<button type="button" class="btn btn-primary toTheLeft" (click)="goTheaters()"  *ngIf="isAdmin">Manage Theaters</button>
+<button type="button" class="btn btn-primary toTheRight" (click)="goHome()" >Go Movies</button>

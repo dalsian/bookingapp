@@ -1,0 +1,33 @@
+<div id="loginContainer" class="container">
+<form novalidate #f="ngForm" (ngSubmit)="onSubmit()">
+    <h2>Login Please</h2>
+    <hr/>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" name="email"  
+                placeholder="user@email.com" [(ngModel)]="credential.email" required  pattern="[^@]*@[^@]*"  #email="ngModel" />
+    </div>
+    <div class="alert alert-danger" *ngIf="email.errors && (email.dirty || email.touched)" >
+            <span class="errMsg" *ngIf="email.errors.required">*Email is required</span>
+            <span class="errMsg" *ngIf="email.errors.pattern">*Email is invalid</span>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password"
+                    [(ngModel)]="credential.password" required minlength="8" #password="ngModel" />
+    </div>
+    <div class="alert alert-danger" *ngIf="password.errors && (password.dirty || password.touched)" >
+            <span class="errMsg" *ngIf="password.errors.required">*Password is required</span>
+            <span class="errMsg" *ngIf="password.errors.minlength">*Password must contain at least 8 characters</span>
+    </div>
+    <div class="form-group">
+        <button type="submit" [disabled]="f.invalid"   class="btn btn-primary">Login</button>
+    </div>
+    <div class="form-group">
+        {{credential.status}}
+    </div>
+</form>
+<hr/>
+<h5>You don't have an account, then register here <button class="btn btn-info" (click)="goRegister()">Register</button></h5>
+
+</div>

@@ -1,0 +1,15 @@
+:host{
+    display: block;
+    height: 60px;
+    background-color : #2e5cb8;
+}
+.toTheLeft{
+margin-left: 5%;
+height: 100%;
+float: left;
+}
+.toTheRight{
+    margin-right: 5%;
+    height: 100%;
+    float: right;
+}

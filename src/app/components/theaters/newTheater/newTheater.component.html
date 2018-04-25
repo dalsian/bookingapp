@@ -1,0 +1,51 @@
+<form novalidate #f="ngForm">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" required [(ngModel)]="model.name" #name="ngModel" />
+    </div>
+    <div class="alert alert-danger" *ngIf="name.errors && (name.dirty || name.touched)" >
+        <span class="errMsg">*Theater name is required</span>
+    </div>
+    <div class="form-group">
+        <label>Address</label>
+        <input type="text" class="form-control" name="address" required [(ngModel)]="model.address" #address="ngModel" />
+    </div>
+    <div class="alert alert-danger" *ngIf="address.errors && (address.dirty || address.touched)" >
+        <span class="errMsg">*Theater address is required</span>
+    </div>
+    <div class="form-group">
+        <label for="isAct">Is Active</label>
+        <input id="isAct" type="checkbox" class="form-check" name="isActive" [(ngModel)]="model.isActive" />
+    </div>
+    <div id="newSection">
+        <h4>Add a section</h4>
+        <div class="form-group">
+            <label>Section Name</label>
+            <input type="text" class="form-control" name="sectionName" required [(ngModel)]="sectionName" #secName="ngModel" />
+        </div>
+        <div class="form-group">
+            <label>Number of seats</label>
+            <input type="number" class="form-control" name="numberOfSeats" required [(ngModel)]="numberOfSeats" #numSeats="ngModel" />
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input type="text" class="form-control" name="price" required [(ngModel)]="price" #p="ngModel" />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" (click)="addSection()" >Add Section</button>
+        </div>
+    </div>
+    <div>
+        <h4>Added Section</h4>
+        <div [@sections]="sections.length">
+            <div  (click)="removeSection(sect.sectionName)" class="alert alert-info" *ngFor="let sect of sections">
+                <span> Section Name: {{sect.sectionName}}, Seats Number {{sect.numberOfSeats}} and Price : {{sect.price}}$ </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Add Theater</button>
+    </div>
+    
+</form>

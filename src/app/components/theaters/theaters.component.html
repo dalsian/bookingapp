@@ -1,0 +1,16 @@
+<div id="theaterContainer" class="container">
+  <nav>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <button class="nav-link active" (click)="showListTheaters()" >Theaters List</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" (click)="showNewTheater()">Add New Theater</button>
+        </li>
+    </ul>
+  </nav>
+  <div id="subContainer">
+    <app-theater-list *ngIf="showList"></app-theater-list>
+    <app-theater-add *ngIf="showAdd"></app-theater-add>
+  </div>
+</div>
